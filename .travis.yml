@@ -3,18 +3,19 @@ services:
   - docker
 before_install:
   - docker build -t darker -f Dockerfile.dev .
+  - docker run darkder ls
 
-language: generic
-script: 
-  - docker run -e CI=true docker npm run test -- --coverage
+# language: generic
+# script: 
+#   - docker run -e CI=true docker npm run test -- --coverage
 
-deploy:
-  provider: elasticbeanstalk
-  region: "us-west-2"
-  app: "docker"
-  evn: "docker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-#######"
-  bucket_path: "docker"
-on:
-   branch: master
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "docker"
+#   evn: "docker-env"
+#   bucket_name: "elasticbeanstalk-us-west-2-#######"
+#   bucket_path: "docker"
+# on:
+#    branch: master
    
